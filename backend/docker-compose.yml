@@ -1,0 +1,38 @@
+version: '3.1'
+
+services:
+  mariadb:
+    image: mariadb:10.5
+    container_name: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: 1234
+      MARIADB_DATABASE: orderize
+      MARIADB_USER: client
+      MARIADB_PASSWORD: 1234
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - connection_back_db
+
+  backend:
+    image: santthiago/orderize-backend:0.0.1
+    container_name: backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mariadb://mariadb:3306/orderize
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 1234
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mariadb
+    networks:
+      - connection_back_db
+
+volumes:
+  mariadb_data:
+
+networks:
+  connection_back_db:
