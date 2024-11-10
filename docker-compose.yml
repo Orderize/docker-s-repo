@@ -18,7 +18,7 @@ services:
       - connection_back_db
 
   backend:
-    image: santthiago/orderize-backend:0.0.6
+    image: santthiago/orderize-backend:latest
     container_name: backend
     environment:
       SPRING_DATASOURCE_URL: jdbc:mariadb://mariadb:3306/orderize
