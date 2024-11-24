@@ -28,6 +28,7 @@ services:
       - "8080:8080"
     depends_on:
       - mariadb
+    restart: on-failure:10
     networks:
       - connection_back_db
 
