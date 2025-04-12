@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  backend:
+    image: santthiago/orderize-backend:latest
+    container_name: backend
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:mariadb://10.0.0.149:3306/orderize
+      SPRING_DATASOURCE_USERNAME: client
+      SPRING_DATASOURCE_PASSWORD: 1234
+    ports:
+      - "8080:8080"
+    restart: on-failure:10
