@@ -17,20 +17,54 @@ services:
     networks:
       - connection_back_db
 
-  backend:
-    image: santthiago/orderize-backend:dev
-    container_name: backend
+  backend_1:
+    image: santthiago/orderize-backend:latest
+    container_name: backend_1
     environment:
+      SPRING_PROFILES_ACTIVE: prod
       SPRING_DATASOURCE_URL: jdbc:mariadb://mariadb:3306/orderize
-      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_USERNAME: client
       SPRING_DATASOURCE_PASSWORD: 1234
     ports:
-      - "8080:8080"
+      - "8080:8081"
     depends_on:
       - mariadb
     restart: on-failure:10
     networks:
       - connection_back_db
+
+  backend_2:
+    image: santthiago/orderize-backend:latest
+    container_name: backend_2
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:mariadb://mariadb:3306/orderize
+      SPRING_DATASOURCE_USERNAME: client
+      SPRING_DATASOURCE_PASSWORD: 1234
+    ports:
+      - "8080:8082"
+    depends_on:
+      - mariadb
+    restart: on-failure:10
+    networks:
+      - connection_back_db
+
+  backend_3:
+    image: santthiago/orderize-backend:latest
+    container_name: backend_3
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:mariadb://mariadb:3306/orderize
+      SPRING_DATASOURCE_USERNAME: client
+      SPRING_DATASOURCE_PASSWORD: 1234
+    ports:
+      - "8080:8083"
+    depends_on:
+      - mariadb
+    restart: on-failure:10
+    networks:
+      - connection_back_db
+
 
 volumes:
   mariadb_data:
