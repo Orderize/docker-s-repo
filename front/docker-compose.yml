@@ -6,12 +6,4 @@ services:
     container_name: frontend
     ports:
       - "80:80"
-      # depends_on:
-      # - backend
-      # networks:
-      # - connection_front_back
-      # volumes:
-      # mariadb_data:
-      # networks:
-      # connection_back_db:
-      # connection_front_back:
+    restart: always
