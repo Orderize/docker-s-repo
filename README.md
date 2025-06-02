@@ -46,7 +46,7 @@ Isso iniciará a API e o banco de dados automaticamente.
 Após subir os containers, a API estará disponível localmente em:
 
 ```
-http://localhost:8080
+http://localhost:8081, http://localhost:8082 ou http://localhost:8083
 ```
 
 Para acessar endpoints protegidos, será necessário um token de autenticação (JWT). Consulte a documentação da API (ou do projeto web) para obter mais informações sobre autenticação e endpoints.
